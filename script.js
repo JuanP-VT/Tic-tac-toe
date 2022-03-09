@@ -28,25 +28,8 @@ const gameBoard = (() =>{
 const playerOne = createPlayer('Juan P', 'O');
 const playerTwo = createPlayer('Computer','X');
     
-
-return {
-gameBoardGrid,
-playerOne,
-playerTwo,
-};
-
-})();
-
-
-
-
-
-
-function gameFlow(){
-
-}
-
-//Draws gamegrid from the mainobject
+const gameFlow =(() =>{
+    //Draws gameboard from the mainobject
 function drawGrid(){
     gameBoard.gameBoardGrid.forEach(grid => {
         const newGrid = grid.element
@@ -55,30 +38,37 @@ function drawGrid(){
     });
 }
 
-drawGrid();
-
 function runEvent(){
     gameBoard.gameBoardGrid.forEach(grid => {
         grid.element.addEventListener('click',Marker)
     });
 }
 
-const currentMark = 'X';
+let currentMark = 'O';
 
 function Marker(){
     const indeX = gameBoard.gameBoardGrid.findIndex(em => em.element === this)
-    console.log(indeX)
-    if (currentMark == 'X'){
+    const domScreen = document.querySelector('#screen').children
+    const domArray = [...domScreen]
+    const gridOpen = gameBoard.gameBoardGrid[indeX].status
+    if (currentMark == 'X' && gridOpen == 'Open'){
         gameBoard.gameBoardGrid[indeX].owner = 'X'
+        gameBoard.gameBoardGrid[indeX].status = 'Closed'
+        domArray[indeX].textContent = 'X'
+
+        return currentMark = 'O'
     }
-    if (currentMark == 'O'){
+    if (currentMark == 'O'  && gridOpen == 'Open'){
         gameBoard.gameBoardGrid[indeX].owner ='O'
+        gameBoard.gameBoardGrid[indeX].status = 'Closed'
+        domArray[indeX].textContent = 'O'
+
+        return currentMark = 'X'
+
     }
-    checkWiner();
+
 }
 
-
-runEvent()
 function checkWiner(){
     //Check for rows
     if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
@@ -100,27 +90,64 @@ function checkWiner(){
     if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
         gameBoard.gameBoardGrid[3].owner == 'X'|gameBoard.gameBoardGrid[3].owner == 'O' &&
         gameBoard.gameBoardGrid[6].owner == 'X'|gameBoard.gameBoardGrid[6].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
         }
     if (gameBoard.gameBoardGrid[1].owner == 'X'|gameBoard.gameBoardGrid[1].owner ==  'O' &&
         gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
         gameBoard.gameBoardGrid[7].owner == 'X'|gameBoard.gameBoardGrid[7].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+        console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
         }
     if (gameBoard.gameBoardGrid[2].owner == 'X'|gameBoard.gameBoardGrid[2].owner ==  'O' &&
         gameBoard.gameBoardGrid[5].owner == 'X'|gameBoard.gameBoardGrid[5].owner == 'O' &&
         gameBoard.gameBoardGrid[8].owner == 'X'|gameBoard.gameBoardGrid[8].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
 //Check for crosses
     if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
         gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
         gameBoard.gameBoardGrid[8].owner == 'X'|gameBoard.gameBoardGrid[8].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+        console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
     }
     if (gameBoard.gameBoardGrid[2].owner == 'X'|gameBoard.gameBoardGrid[2].owner ==  'O' &&
         gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
         gameBoard.gameBoardGrid[6].owner == 'X'|gameBoard.gameBoardGrid[6].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
 }
+    
+    return{
+        drawGrid,
+        runEvent,
+        Marker,
+        checkWiner,
+    }
+
+})();
+
+
+
+
+return {
+gameBoardGrid,
+playerOne,
+playerTwo,
+gameFlow,
+};
+
+})();
+
+
+
+
+function start(){
+    //Check if there are available grids to play and runs a loop
+    const gridsOpen = gameBoard.gameBoardGrid.some(function(val){
+        return val.status == 'Open'
+    })
+    gameBoard.gameFlow.drawGrid()
+    gameBoard.gameFlow.runEvent()
+}
+
+start()
+
+
