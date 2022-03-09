@@ -51,19 +51,22 @@ function Marker(){
     const indeX = gameBoard.gameBoardGrid.findIndex(em => em.element === this)
     const domScreen = document.querySelector('#screen').children
     const domArray = [...domScreen]
-    const gridOpen = gameBoard.gameBoardGrid[indeX].status
-    if (currentMark == 'X' && gridOpen == 'Open'){
+    const gridIsOpen = gameBoard.gameBoardGrid[indeX].status
+    const gridObj = gameBoard.gameBoardGrid
+    if (currentMark == 'X' && gridIsOpen == 'Open'){
         gameBoard.gameBoardGrid[indeX].owner = 'X'
         gameBoard.gameBoardGrid[indeX].status = 'Closed'
         domArray[indeX].textContent = 'X'
         checkWiner()
+        checkDraw(gridObj)
         return currentMark = 'O'
     }
-    if (currentMark == 'O'  && gridOpen == 'Open'){
+    if (currentMark == 'O'  && gridIsOpen == 'Open'){
         gameBoard.gameBoardGrid[indeX].owner ='O'
         gameBoard.gameBoardGrid[indeX].status = 'Closed'
         domArray[indeX].textContent = 'O'
         checkWiner()
+        checkDraw(gridObj)
         return currentMark = 'X'
 
     }
@@ -81,11 +84,6 @@ function checkWiner(){
         gameBoard.gameBoardGrid[2].owner == 'O'){
             console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
         }
-
-
-
-
-
     if (gameBoard.gameBoardGrid[3].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[5].owner == 'X'){
@@ -96,10 +94,6 @@ function checkWiner(){
         gameBoard.gameBoardGrid[5].owner == 'O'){
         console.log('Winner is '+gameBoard.gameBoardGrid[3].owner)
         }
-
-
-
-
     if (gameBoard.gameBoardGrid[6].owner == 'X'&&
         gameBoard.gameBoardGrid[7].owner == 'X'&&
         gameBoard.gameBoardGrid[8].owner == 'X'){
@@ -124,10 +118,6 @@ function checkWiner(){
         gameBoard.gameBoardGrid[6].owner == 'O'){
             console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
         }
-
-
-
-
     if (gameBoard.gameBoardGrid[1].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[7].owner == 'X'){
@@ -138,12 +128,6 @@ function checkWiner(){
         gameBoard.gameBoardGrid[7].owner == 'O'){
         console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
         }
-
-
-
-
-
-
     if (gameBoard.gameBoardGrid[2].owner == 'X'&&
         gameBoard.gameBoardGrid[5].owner == 'X'&&
         gameBoard.gameBoardGrid[8].owner == 'X'){
@@ -154,10 +138,6 @@ function checkWiner(){
         gameBoard.gameBoardGrid[8].owner == 'O'){
             console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
-
-
-
-
 //Check for crosses
     if (gameBoard.gameBoardGrid[0].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
@@ -169,24 +149,25 @@ function checkWiner(){
         gameBoard.gameBoardGrid[8].owner == 'O'){
         console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
     }
-
-
-
-
-
     if (gameBoard.gameBoardGrid[2].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[6].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
-
     if (gameBoard.gameBoardGrid[2].owner == 'O'&&
         gameBoard.gameBoardGrid[4].owner == 'O'&&
         gameBoard.gameBoardGrid[6].owner == 'O'){
         console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
     }
-
-        
+}
+function checkDraw(array){
+    const gridsOpen = gameBoard.gameBoardGrid.some(function(val){
+        return val.status == 'Open'
+    })
+    console.log(gridsOpen)
+    if (gridsOpen == false ){
+        return console.log('DRAW!!!')
+    }
 }
 
     
@@ -195,6 +176,7 @@ function checkWiner(){
         runEvent,
         Marker,
         checkWiner,
+        checkDraw,
     }
 
 })();
@@ -221,7 +203,9 @@ function start(){
     })
     gameBoard.gameFlow.drawGrid()
     gameBoard.gameFlow.runEvent()
-}
+
+    }
+
 
 start()
 
