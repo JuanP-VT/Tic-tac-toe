@@ -45,6 +45,7 @@ function runEvent(){
 }
 
 let currentMark = 'O';
+let winner = '';
 
 function Marker(){
     const indeX = gameBoard.gameBoardGrid.findIndex(em => em.element === this)
@@ -55,65 +56,139 @@ function Marker(){
         gameBoard.gameBoardGrid[indeX].owner = 'X'
         gameBoard.gameBoardGrid[indeX].status = 'Closed'
         domArray[indeX].textContent = 'X'
-
+        checkWiner()
         return currentMark = 'O'
     }
     if (currentMark == 'O'  && gridOpen == 'Open'){
         gameBoard.gameBoardGrid[indeX].owner ='O'
         gameBoard.gameBoardGrid[indeX].status = 'Closed'
         domArray[indeX].textContent = 'O'
-
+        checkWiner()
         return currentMark = 'X'
 
     }
 
 }
-
 function checkWiner(){
     //Check for rows
-    if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
-        gameBoard.gameBoardGrid[1].owner == 'X'|gameBoard.gameBoardGrid[1].owner == 'O' &&
-        gameBoard.gameBoardGrid[2].owner == 'X'|gameBoard.gameBoardGrid[2].owner == 'O'){
+    if (gameBoard.gameBoardGrid[0].owner == 'X'&&
+        gameBoard.gameBoardGrid[1].owner == 'X'&&
+        gameBoard.gameBoardGrid[2].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
         }
-    if (gameBoard.gameBoardGrid[3].owner == 'X'|gameBoard.gameBoardGrid[3].owner ==  'O' &&
-        gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
-        gameBoard.gameBoardGrid[5].owner == 'X'|gameBoard.gameBoardGrid[5].owner == 'O'){
+    if  (gameBoard.gameBoardGrid[0].owner ==  'O' &&
+        gameBoard.gameBoardGrid[1].owner == 'O' &&
+        gameBoard.gameBoardGrid[2].owner == 'O'){
+            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
+        }
+
+
+
+
+
+    if (gameBoard.gameBoardGrid[3].owner == 'X'&&
+        gameBoard.gameBoardGrid[4].owner == 'X'&&
+        gameBoard.gameBoardGrid[5].owner == 'X'){
         console.log('Winner is '+gameBoard.gameBoardGrid[3].owner)
         }
-    if (gameBoard.gameBoardGrid[6].owner == 'X'|gameBoard.gameBoardGrid[6].owner ==  'O' &&
-        gameBoard.gameBoardGrid[7].owner == 'X'|gameBoard.gameBoardGrid[7].owner == 'O' &&
-        gameBoard.gameBoardGrid[8].owner == 'X'|gameBoard.gameBoardGrid[8].owner == 'O'){
+    if (gameBoard.gameBoardGrid[3].owner ==  'O'&&
+        gameBoard.gameBoardGrid[4].owner == 'O'&&
+        gameBoard.gameBoardGrid[5].owner == 'O'){
+        console.log('Winner is '+gameBoard.gameBoardGrid[3].owner)
+        }
+
+
+
+
+    if (gameBoard.gameBoardGrid[6].owner == 'X'&&
+        gameBoard.gameBoardGrid[7].owner == 'X'&&
+        gameBoard.gameBoardGrid[8].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+            
+        }
+    if (gameBoard.gameBoardGrid[6].owner ==  'O'&&
+        gameBoard.gameBoardGrid[7].owner == 'O' &&
+        gameBoard.gameBoardGrid[8].owner == 'O'){
+            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
+            
         }
     //Check for columns
-    if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
-        gameBoard.gameBoardGrid[3].owner == 'X'|gameBoard.gameBoardGrid[3].owner == 'O' &&
-        gameBoard.gameBoardGrid[6].owner == 'X'|gameBoard.gameBoardGrid[6].owner == 'O'){
+    if (gameBoard.gameBoardGrid[0].owner == 'X'&&
+        gameBoard.gameBoardGrid[3].owner == 'X'&&
+        gameBoard.gameBoardGrid[6].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
         }
-    if (gameBoard.gameBoardGrid[1].owner == 'X'|gameBoard.gameBoardGrid[1].owner ==  'O' &&
-        gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
-        gameBoard.gameBoardGrid[7].owner == 'X'|gameBoard.gameBoardGrid[7].owner == 'O'){
+
+        if (gameBoard.gameBoardGrid[0].owner ==  'O'&&
+        gameBoard.gameBoardGrid[3].owner == 'O'&&
+        gameBoard.gameBoardGrid[6].owner == 'O'){
+            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
+        }
+
+
+
+
+    if (gameBoard.gameBoardGrid[1].owner == 'X'&&
+        gameBoard.gameBoardGrid[4].owner == 'X'&&
+        gameBoard.gameBoardGrid[7].owner == 'X'){
         console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
         }
-    if (gameBoard.gameBoardGrid[2].owner == 'X'|gameBoard.gameBoardGrid[2].owner ==  'O' &&
-        gameBoard.gameBoardGrid[5].owner == 'X'|gameBoard.gameBoardGrid[5].owner == 'O' &&
-        gameBoard.gameBoardGrid[8].owner == 'X'|gameBoard.gameBoardGrid[8].owner == 'O'){
+    if (gameBoard.gameBoardGrid[1].owner ==  'O'&&
+        gameBoard.gameBoardGrid[4].owner == 'O'&&
+        gameBoard.gameBoardGrid[7].owner == 'O'){
+        console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
+        }
+
+
+
+
+
+
+    if (gameBoard.gameBoardGrid[2].owner == 'X'&&
+        gameBoard.gameBoardGrid[5].owner == 'X'&&
+        gameBoard.gameBoardGrid[8].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
+    if (gameBoard.gameBoardGrid[2].owner ==  'O'&&
+        gameBoard.gameBoardGrid[5].owner == 'O'&&
+        gameBoard.gameBoardGrid[8].owner == 'O'){
+            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
+        }
+
+
+
+
 //Check for crosses
-    if (gameBoard.gameBoardGrid[0].owner == 'X'|gameBoard.gameBoardGrid[0].owner ==  'O' &&
-        gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
-        gameBoard.gameBoardGrid[8].owner == 'X'|gameBoard.gameBoardGrid[8].owner == 'O'){
+    if (gameBoard.gameBoardGrid[0].owner == 'X'&&
+        gameBoard.gameBoardGrid[4].owner == 'X'&&
+        gameBoard.gameBoardGrid[8].owner == 'X'){
         console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
     }
-    if (gameBoard.gameBoardGrid[2].owner == 'X'|gameBoard.gameBoardGrid[2].owner ==  'O' &&
-        gameBoard.gameBoardGrid[4].owner == 'X'|gameBoard.gameBoardGrid[4].owner == 'O' &&
-        gameBoard.gameBoardGrid[6].owner == 'X'|gameBoard.gameBoardGrid[6].owner == 'O'){
+    if (gameBoard.gameBoardGrid[0].owner == 'O'&&
+        gameBoard.gameBoardGrid[4].owner == 'O'&&
+        gameBoard.gameBoardGrid[8].owner == 'O'){
+        console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
+    }
+
+
+
+
+
+    if (gameBoard.gameBoardGrid[2].owner == 'X'&&
+        gameBoard.gameBoardGrid[4].owner == 'X'&&
+        gameBoard.gameBoardGrid[6].owner == 'X'){
             console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
         }
+
+    if (gameBoard.gameBoardGrid[2].owner == 'O'&&
+        gameBoard.gameBoardGrid[4].owner == 'O'&&
+        gameBoard.gameBoardGrid[6].owner == 'O'){
+        console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
+    }
+
+        
 }
+
     
     return{
         drawGrid,
