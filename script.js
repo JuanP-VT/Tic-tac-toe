@@ -237,10 +237,10 @@ function checkDraw(array){
 
 
 function Winner(win){
+    gameBoard.gameFlow.playerWin = 'Win'
     console.log(win)
     const winnerDiv = document.querySelector('#winnerdiv')
     winnerDiv.textContent = 'The winner is '+ win + '  !!!'
-    gameBoard.gameFlow.playerWin = win
     resetButton()
     stopEvents()
 }
@@ -258,6 +258,7 @@ function resetButton(){
     resetBtn.textContent = 'Reset Game'
     resetBtn.addEventListener('click',resetGame)
     resetDiv.appendChild(resetBtn)
+
 }
 function resetGame(){
     //Reset the gameboard object
@@ -266,6 +267,7 @@ function resetGame(){
         grid.owner = 'noOne'
         grid.element.classList.remove('active')
         grid.element.textContent = ''
+        gameBoard.gameFlow.playerWin = ''
     });
     //Delete DOM elements
     const divScreen = document.querySelector('#screen')
