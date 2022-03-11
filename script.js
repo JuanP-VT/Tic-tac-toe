@@ -45,7 +45,6 @@ function runEvent(){
 }
 
 let currentMark = 'O';
-let winner = '';
 
 function Marker(){
     const indeX = gameBoard.gameBoardGrid.findIndex(em => em.element === this)
@@ -70,6 +69,8 @@ function Marker(){
         return currentMark = 'X'
     }
 }
+const playerWin = ''
+
 function checkWiner(){
     //Check for rows
     if (gameBoard.gameBoardGrid[0].owner == 'X'&&
@@ -224,7 +225,9 @@ function checkDraw(array){
         return val.status == 'Open'
     })
     console.log(gridsOpen)
-    if (gridsOpen == false ){
+    //check if there is winner first
+    const winneChk= gameBoard.gameFlow.playerWin
+    if (gridsOpen == false && winneChk  == ''){
         const winnerDiv = document.querySelector('#winnerdiv')
         winnerDiv.textContent = 'It is a DRAW!!'
         resetButton()
@@ -237,6 +240,7 @@ function Winner(win){
     console.log(win)
     const winnerDiv = document.querySelector('#winnerdiv')
     winnerDiv.textContent = 'The winner is '+ win + '  !!!'
+    gameBoard.gameFlow.playerWin = win
     resetButton()
     stopEvents()
 }
@@ -275,7 +279,6 @@ function resetGame(){
     //Rerun game
     start()
 }
-
     
     return{
         drawGrid,
@@ -285,7 +288,8 @@ function resetGame(){
         checkDraw,
         Winner,
         resetButton,
-        stopEvents
+        stopEvents,
+        playerWin,
     }
 
 })();
