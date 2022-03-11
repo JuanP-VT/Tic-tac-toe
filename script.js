@@ -182,8 +182,6 @@ function checkDraw(array){
 })();
 
 
-
-
 return {
 gameBoardGrid,
 playerOne,
@@ -203,7 +201,6 @@ function start(){
     })
     gameBoard.gameFlow.drawGrid()
     gameBoard.gameFlow.runEvent()
-
     }
 
 
