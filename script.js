@@ -68,96 +68,155 @@ function Marker(){
         checkWiner()
         checkDraw(gridObj)
         return currentMark = 'X'
-
     }
-
 }
 function checkWiner(){
     //Check for rows
     if (gameBoard.gameBoardGrid[0].owner == 'X'&&
         gameBoard.gameBoardGrid[1].owner == 'X'&&
         gameBoard.gameBoardGrid[2].owner == 'X'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[1].element.classList.add('active');
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
         }
     if  (gameBoard.gameBoardGrid[0].owner ==  'O' &&
         gameBoard.gameBoardGrid[1].owner == 'O' &&
         gameBoard.gameBoardGrid[2].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
-        }
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[1].element.classList.add('active');
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[3].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[5].owner == 'X'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[3].owner)
+            gameBoard.gameBoardGrid[3].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[5].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[3].owner;
+            Winner(winner)
         }
     if (gameBoard.gameBoardGrid[3].owner ==  'O'&&
         gameBoard.gameBoardGrid[4].owner == 'O'&&
         gameBoard.gameBoardGrid[5].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[3].owner)
-        }
+            gameBoard.gameBoardGrid[3].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[5].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[3].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[6].owner == 'X'&&
         gameBoard.gameBoardGrid[7].owner == 'X'&&
         gameBoard.gameBoardGrid[8].owner == 'X'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
-            
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            gameBoard.gameBoardGrid[7].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[6].owner;
+            Winner(winner)
         }
     if (gameBoard.gameBoardGrid[6].owner ==  'O'&&
         gameBoard.gameBoardGrid[7].owner == 'O' &&
         gameBoard.gameBoardGrid[8].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[6].owner)
-            
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            gameBoard.gameBoardGrid[7].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[6].owner;
+            Winner(winner)
         }
     //Check for columns
     if (gameBoard.gameBoardGrid[0].owner == 'X'&&
         gameBoard.gameBoardGrid[3].owner == 'X'&&
         gameBoard.gameBoardGrid[6].owner == 'X'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
-        }
-
-        if (gameBoard.gameBoardGrid[0].owner ==  'O'&&
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[3].element.classList.add('active');
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
+            }
+    if (gameBoard.gameBoardGrid[0].owner ==  'O'&&
         gameBoard.gameBoardGrid[3].owner == 'O'&&
         gameBoard.gameBoardGrid[6].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
-        }
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[3].element.classList.add('active');
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[1].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[7].owner == 'X'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
-        }
+            gameBoard.gameBoardGrid[1].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[7].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[1].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[1].owner ==  'O'&&
         gameBoard.gameBoardGrid[4].owner == 'O'&&
         gameBoard.gameBoardGrid[7].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[1].owner)
-        }
+            gameBoard.gameBoardGrid[1].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[7].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[1].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[2].owner == 'X'&&
         gameBoard.gameBoardGrid[5].owner == 'X'&&
         gameBoard.gameBoardGrid[8].owner == 'X'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
-        }
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            gameBoard.gameBoardGrid[5].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[2].owner;
+            Winner(winner)
+            }
     if (gameBoard.gameBoardGrid[2].owner ==  'O'&&
         gameBoard.gameBoardGrid[5].owner == 'O'&&
         gameBoard.gameBoardGrid[8].owner == 'O'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
-        }
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            gameBoard.gameBoardGrid[5].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[2].owner;
+            Winner(winner)
+            }
 //Check for crosses
     if (gameBoard.gameBoardGrid[0].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[8].owner == 'X'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
-    }
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
+        }
     if (gameBoard.gameBoardGrid[0].owner == 'O'&&
         gameBoard.gameBoardGrid[4].owner == 'O'&&
         gameBoard.gameBoardGrid[8].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[0].owner)
+            gameBoard.gameBoardGrid[0].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[8].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[0].owner;
+            Winner(winner)
     }
     if (gameBoard.gameBoardGrid[2].owner == 'X'&&
         gameBoard.gameBoardGrid[4].owner == 'X'&&
         gameBoard.gameBoardGrid[6].owner == 'X'){
-            console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[2].owner;
+            Winner(winner)
         }
     if (gameBoard.gameBoardGrid[2].owner == 'O'&&
         gameBoard.gameBoardGrid[4].owner == 'O'&&
         gameBoard.gameBoardGrid[6].owner == 'O'){
-        console.log('Winner is '+gameBoard.gameBoardGrid[2].owner)
+            gameBoard.gameBoardGrid[2].element.classList.add('active');
+            gameBoard.gameBoardGrid[4].element.classList.add('active');
+            gameBoard.gameBoardGrid[6].element.classList.add('active');
+            const winner = gameBoard.gameBoardGrid[2].owner;
+            Winner(winner)
     }
 }
 function checkDraw(array){
@@ -207,3 +266,8 @@ function start(){
 start()
 
 
+function Winner(win){
+    console.log(win)
+    const winnerDiv = document.querySelector('#winnerdiv')
+    winnerDiv.textContent = 'The winner is '+ win + '  !!!'
+}

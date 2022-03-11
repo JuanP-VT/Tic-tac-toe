@@ -45,3 +45,8 @@ body{
     font-size: 3rem;
     font-weight: 700;
 }
+
+.active{
+    background-color: rgb(187, 29, 24);
+    opacity: 0.8;
+}
