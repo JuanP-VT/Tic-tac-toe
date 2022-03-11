@@ -225,8 +225,55 @@ function checkDraw(array){
     })
     console.log(gridsOpen)
     if (gridsOpen == false ){
-        return console.log('DRAW!!!')
+        const winnerDiv = document.querySelector('#winnerdiv')
+        winnerDiv.textContent = 'It is a DRAW!!'
+        resetButton()
+        stopEvents()
+}
+}
+
+
+function Winner(win){
+    console.log(win)
+    const winnerDiv = document.querySelector('#winnerdiv')
+    winnerDiv.textContent = 'The winner is '+ win + '  !!!'
+    resetButton()
+    stopEvents()
+}
+
+function stopEvents(){
+    const gridsDiv = document.querySelectorAll('.grid')
+    gridsDiv.forEach(element => {
+        element.removeEventListener('click', Marker)
+    });
+}
+
+function resetButton(){
+    const resetDiv = document.querySelector('#reset')
+    const resetBtn= document.createElement('button')
+    resetBtn.textContent = 'Reset Game'
+    resetBtn.addEventListener('click',resetGame)
+    resetDiv.appendChild(resetBtn)
+}
+function resetGame(){
+    //Reset the gameboard object
+    gameBoard.gameBoardGrid.forEach(grid => {
+        grid.status = 'Open'
+        grid.owner = 'noOne'
+        grid.element.classList.remove('active')
+        grid.element.textContent = ''
+    });
+    //Delete DOM elements
+    const divScreen = document.querySelector('#screen')
+    while (divScreen.firstChild){
+        divScreen.removeChild(divScreen.firstChild)
     }
+    const removeDiv = document.querySelector('#reset')
+    removeDiv.removeChild(removeDiv.firstChild)
+    const winnerDiv = document.querySelector('#winnerdiv')
+    winnerDiv.textContent = ''
+    //Rerun game
+    start()
 }
 
     
@@ -236,6 +283,9 @@ function checkDraw(array){
         Marker,
         checkWiner,
         checkDraw,
+        Winner,
+        resetButton,
+        stopEvents
     }
 
 })();
@@ -261,13 +311,4 @@ function start(){
     gameBoard.gameFlow.drawGrid()
     gameBoard.gameFlow.runEvent()
     }
-
-
 start()
-
-
-function Winner(win){
-    console.log(win)
-    const winnerDiv = document.querySelector('#winnerdiv')
-    winnerDiv.textContent = 'The winner is '+ win + '  !!!'
-}
