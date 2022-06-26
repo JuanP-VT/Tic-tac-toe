@@ -6,7 +6,7 @@ This project is part of my **Curriculum Series**, the objective is to have a rep
 
 I go deeper with javascript, Object Oriented Programming, design patterns and more advanced concepts like high order functions, arrow functions.
 
-This is a simple Tic Tac Game, make a Row , Colum or Cross to win, player one start, the goal of this App Game is to practice building utilizing the principles of OOP and design patterns like factory functions , modules.
+This is a simple Tic Tac Game, make a Row , Colum or Cross to win, player one start, the goal of this App Game is to practice  utilizing the principles of OOP and design patterns like factory functions , modules.
 
 ## Objective
 
